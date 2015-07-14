@@ -17,11 +17,6 @@ class TestErrors(unittest.TestCase):
 		server = redis.StrictRedis("localhost")
 		server.flushall()
 	
-	def test_setUp(self): # test that setUp cleared redis database
-		list_page_content = get_list()
-		array = jsonpickle.decode(list_page_content)
-		self.assertEqual(len(array), 0)
-	
 	def test_5_Error1(self): # change to capital T to skip test
 		open_n_times("http://localhost:5000/error1", 5)
 		list_page_content = get_list()
