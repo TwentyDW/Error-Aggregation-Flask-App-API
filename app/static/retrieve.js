@@ -1,8 +1,5 @@
 require(['main'], function (jsonpickle) {
 
-		/* given hash, gets error details using API*/ 
-	
-
 	/* sends http get request for errors overview*/
 	function get_data(){
 		var xhr = new XMLHttpRequest();
@@ -31,7 +28,7 @@ require(['main'], function (jsonpickle) {
 		var div  = document.getElementById('block');
 		var table = document.createElement("table");
 		table.setAttribute("id", "table");
-		table.setAttribute("class", "table table-hover");
+		table.setAttribute("class", "table table-hover tablesorter");
 		div.appendChild(table);
 		table.innerHTML = "<thead><tr><th>Hash</th><th>Error Message</th><th>First Occurrence</th><th>Most Recent Occurrence</th><th>Count</th></tr></thead>";
 		var tablebody = table.appendChild(document.createElement('tbody'));
@@ -72,11 +69,17 @@ require(['main'], function (jsonpickle) {
 		document.close();
 	}
 	
-	
+	/* opens details.html in new tab */
 	function make_details_window(hash) {
 		window.open("details.html?hash=" + hash); // or use window.location if errors		
 	}
 
 	// main begins
 	get_data();
+	$(document).ready(function() 
+    { 
+        $("#table").tablesorter(); 
+    }); 
+    
+	
 });

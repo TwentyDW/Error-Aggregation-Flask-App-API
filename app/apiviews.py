@@ -13,7 +13,7 @@ def home():
 def details():
 	return render_template('details.html')
 
-@app2.route("/list")
+@app2.route("/list") # api for getting json array of error data jsons
 def list():
 	json_array_of_jsons = api.get_jsons()
 	h = Headers()
@@ -22,7 +22,7 @@ def list():
 	resp = Response(response = json_array_of_jsons, headers = h, status = 200)
 	return resp
 
-@app2.route("/list/<string:provided_hash>")
+@app2.route("/list/<string:provided_hash>") # api for getting one error json
 def list_hash(provided_hash):
 	detailed_json = api.get_detailed_json(provided_hash)
 	h = Headers()

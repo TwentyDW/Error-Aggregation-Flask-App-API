@@ -25,7 +25,7 @@ require(['main'], function (jsonpickle) {
 		table.setAttribute("id", "table");
 		table.setAttribute("class", "table table-hover");
 		div.appendChild(table);
-		table.innerHTML = "<thead><tr><th>Hash</th><th>Error Message</th><th>First Occurrence</th><th>Most Recent Occurrence</th><th>Count</th><th>URL</th><th>Method</th><th>Stack Trace</th></tr></thead>";
+		table.innerHTML = "<thead><tr><th>Error Message</th><th>Method</th><th>URL</th><th>First Occurrence</th><th>Most Recent Occurrence</th><th>Count</th><th>Stack Trace</th></tr></thead>";
 		var tablebody = table.appendChild(document.createElement('tbody'));
 
 		var tr = document.createElement('tr');   
@@ -37,26 +37,25 @@ require(['main'], function (jsonpickle) {
 		var td5 = document.createElement('td');
 		var td6 = document.createElement('td');
 		var td7 = document.createElement('td');
-		var td8 = document.createElement('td');
 		
 
-		var text1 = document.createTextNode(detailed_error.hash);
-		var text2 = document.createTextNode(detailed_error.message_string);
-		var text3 = document.createTextNode(detailed_error.first_occurrence);
-		var text4 = document.createTextNode(detailed_error.last_occurrence);
-		var text5 = document.createTextNode(detailed_error.count);
-		var text6 = document.createTextNode(detailed_error.context.url);
-		var text7 = document.createTextNode(detailed_error.context.method);
-		var text8 = document.createTextNode(detailed_error.stack_trace);
+		var text1 = document.createTextNode(detailed_error.message_string);
+		var text2 = document.createTextNode(detailed_error.context.method);
+		var text3 = document.createTextNode(detailed_error.context.url);
+		var text4 = document.createTextNode(detailed_error.first_occurrence);
+		var text5 = document.createTextNode(detailed_error.last_occurrence);
+		var text6 = document.createTextNode(detailed_error.count);
+		var text7 = document.createTextNode(detailed_error.stack_trace);
 
 		td1.appendChild(text1);
 		td2.appendChild(text2);
 		td3.appendChild(text3);
 		td4.appendChild(text4);
 		td5.appendChild(text5);	
-		td6.appendChild(text6);	
-		td7.appendChild(text7);	
-		td8.appendChild(text8);	
+		td6.appendChild(text6);
+		var pretag = document.createElement("PRE");
+		pretag.appendChild(text7);
+		td7.appendChild(pretag);	
 		
 		tr.appendChild(td1);
 		tr.appendChild(td2);
@@ -65,11 +64,11 @@ require(['main'], function (jsonpickle) {
 		tr.appendChild(td5);
 		tr.appendChild(td6);
 		tr.appendChild(td7);
-		tr.appendChild(td8);
 
 		tablebody.appendChild(tr);
 		
 		document.close();
+		alert(detailed_error.stack_trace);
 	}
 
 	// this main here
