@@ -29,39 +29,39 @@ class TestErrors(unittest.TestCase):
 		self.assertEqual(error1_obj.context.url, "http://localhost:5000/error1") # check context.url is correct
 		self.assertEqual(error1_obj.context.method, "GET") # check context.method is correct
 		
-	def test_5_Error2(self): # change to capital T to skip test
-		open_n_times("http://localhost:5000/error2", 5)
+	def test_1_Error2(self): # change to capital T to skip test
+		open_n_times("http://localhost:5000/error2", 1)
 		list_page_content = get_list()
 		array = jsonpickle.decode(list_page_content)
 		self.assertEqual(len(array), 1) # check there is only one element in array
 		error1_obj_json = array[0]
 		error1_obj = jsonpickle.decode(error1_obj_json)
 		self.assertEqual(error1_obj.message_string, "global name 'spam' is not defined") # check message string is correct
-		self.assertEqual(error1_obj.count, 5) # check error count is correct
+		self.assertEqual(error1_obj.count, 1) # check error count is correct
 		self.assertEqual(error1_obj.context.url, "http://localhost:5000/error2") # check context.url is correct
 		self.assertEqual(error1_obj.context.method, "GET") # check context.method is correct
 
-	def test_5_Error3(self): # change to capital T to skip test
-		open_n_times("http://localhost:5000/error3", 5)
+	def test_10_Error3(self): # change to capital T to skip test
+		open_n_times("http://localhost:5000/error3", 10)
 		list_page_content = get_list()
 		array = jsonpickle.decode(list_page_content)
 		self.assertEqual(len(array), 1) # check there is only one element in array
 		error1_obj_json = array[0]
 		error1_obj = jsonpickle.decode(error1_obj_json)
 		self.assertEqual(error1_obj.message_string, "cannot concatenate 'str' and 'int' objects") # check message string is correct
-		self.assertEqual(error1_obj.count, 5) # check error count is correct
+		self.assertEqual(error1_obj.count, 10) # check error count is correct
 		self.assertEqual(error1_obj.context.url, "http://localhost:5000/error3") # check context.url is correct
 		self.assertEqual(error1_obj.context.method, "GET") # check context.method is correct
 
-	def test_5_Error4(self): # change to capital T to skip test
-		open_n_times("http://localhost:5000/error4", 5)
+	def test_3_Error4(self): # change to capital T to skip test
+		open_n_times("http://localhost:5000/error4", 3)
 		list_page_content = get_list()
 		array = jsonpickle.decode(list_page_content)
 		self.assertEqual(len(array), 1) # check there is only one element in array
 		error1_obj_json = array[0]
 		error1_obj = jsonpickle.decode(error1_obj_json)
 		self.assertEqual(error1_obj.message_string, "Test ValueError") # check message string is correct
-		self.assertEqual(error1_obj.count, 5) # check error count is correct
+		self.assertEqual(error1_obj.count, 3) # check error count is correct
 		self.assertEqual(error1_obj.context.url, "http://localhost:5000/error4") # check context.url is correct
 		self.assertEqual(error1_obj.context.method, "GET") # check context.method is correct				
 	

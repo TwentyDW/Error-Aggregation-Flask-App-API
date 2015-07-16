@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Errors Aggregation UI</title> 
+		<meta name="keywords" content="HTML, CSS, XML, Javascript"/>
+		<meta author="me"/>
+		<meta description="Table with errors data"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script data-main="{{ url_for('static', filename='jsonpickleJS/main') }}" src="http://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+	</head>
+	<body>
+		<div id="block">
+		</div>
+		<script src="{{ url_for('static', filename='retrieve.js') }}"></script>
+		<script src="{{ url_for('static', filename='objconstructors.js') }}"></script>
+	</body>	
+	</html>
